@@ -1,7 +1,6 @@
 import { FC } from "react";
 import { Pokemon } from "../types";
 import PokemonInfoPill from "./shared/PokemonInfoPill";
-import { AiFillStar } from "react-icons/ai";
 
 interface FavouritePokemonsGridProps {
   pokemons: Pokemon[];
