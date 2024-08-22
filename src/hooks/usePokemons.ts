@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { PokemonData, PokemonOverview } from "../types";
+import { PokemonOverview } from "../types";
+import { getPokemons } from "../api/pokemon";
 
 const usePokemons = () => {
   const [pokemons, setPokemons] = useState<PokemonOverview[]>([]);
@@ -7,17 +8,11 @@ const usePokemons = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const getPokemons = async (offset: number = 0) => {
+  const fetchPokemons = async (offset: number = 0) => {
     setLoading(true);
     try {
       setLoading(true);
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon?offset=${offset}`
-      );
-      if (!response.ok) {
-        throw new Error("Failed to fetch the pokemons");
-      }
-      const data: PokemonData = await response.json();
+      const data = await getPokemons(offset);
       setPokemons([...pokemons, ...data.results]);
       if (!totalCount) {
         setTotalCount(data.count);
@@ -30,11 +25,11 @@ const usePokemons = () => {
   };
 
   const fetchNext = () => {
-    getPokemons(pokemons.length);
+    fetchPokemons(pokemons.length);
   };
 
   useEffect(() => {
-    getPokemons();
+    fetchPokemons();
   }, []);
 
   return { pokemons, totalCount, fetchNext, loading, error };

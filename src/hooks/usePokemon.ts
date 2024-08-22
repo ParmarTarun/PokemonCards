@@ -1,21 +1,18 @@
 import { useState, useEffect } from "react";
 import { Pokemon } from "../types";
-import { processPokemonResult } from "../utility";
+import { getPokemon } from "../api/pokemon";
 
 const usePokemon = (id: number) => {
   const [selectedPokemon, setSelectedPokemon] = useState<Pokemon>();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const getPokemon = async () => {
+  const fetchPokemon = async () => {
     setLoading(true);
     try {
       setLoading(true);
-      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-      if (!response.ok) {
-        throw new Error("Failed to fetch the pokemons");
-      }
-      const data: Pokemon = processPokemonResult(await response.json());
+      const data = await getPokemon(id);
+
       setSelectedPokemon(data);
     } catch (error) {
       setError((error as Error).message);
@@ -26,10 +23,10 @@ const usePokemon = (id: number) => {
 
   useEffect(() => {
     if (id < 0) return;
-    getPokemon();
+    fetchPokemon();
   }, [id]);
 
-  return { selectedPokemon, loading, error };
+  return { selectedPokemon, refreshPokemon: fetchPokemon, loading, error };
 };
 
 export default usePokemon;

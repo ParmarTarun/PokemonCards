@@ -9,6 +9,17 @@
 .header {
   font-size: larger;
   margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  button {
+    border: 1px solid $primary-color;
+    border-radius: 5px;
+  }
+  button:hover {
+    background-color: $primary-color;
+    color: $dark-color;
+  }
 }
 
 .pokemon-section {
@@ -69,11 +80,20 @@
       text-align: left;
       padding: 0 1rem;
       h2 {
-        margin: 0;
+        margin-top: 0;
+        margin-bottom: 10px;
         text-transform: uppercase;
 
-        svg {
-          font-size: xx-large;
+        button {
+          background: none;
+          color: $dark-color;
+          float: right;
+          svg {
+            font-size: xx-large;
+          }
+        }
+        span {
+          font-size: small;
           float: right;
         }
       }
