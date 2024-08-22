@@ -42,7 +42,7 @@ function App() {
         )}
 
         <Modal
-          title="Favourite Pokemons"
+          title={`Favourite Pokemons ${favouritePokemons.length}`}
           isOpen={showFavourites}
           onClose={() => setShowFavourites(false)}
         >

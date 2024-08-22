@@ -69,7 +69,7 @@
   .pokemon-details {
     display: grid;
     grid-template-columns: 1fr 4fr;
-    padding: 1rem;
+    padding: 2rem 4rem;
 
     .pokemon-thumbnail {
       background: $dark-color;
@@ -97,22 +97,38 @@
           float: right;
         }
       }
-      .info-wrapper {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        margin-top: 10px;
+    }
+  }
+}
 
-        .pokemon-info {
-          margin: 0;
-          background: $secondary-color;
-          color: $light-color;
-          font-weight: bolder;
-          padding: 0.3rem 1rem;
-          width: max-content;
-          border-radius: 5px;
-        }
-      }
+.pokemons-grid {
+  padding: 2rem 4rem;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 1rem;
+  overflow-x: auto;
+  .pokemon-card {
+    // display: inline-block;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    border: 1px solid $secondary-color;
+    // width: max-content;
+    background: $dark-color;
+    border-radius: 10px;
+    width: 250px;
+    flex: 0 0 auto;
+    height: max-content;
+    img {
+      margin-top: 1rem;
+      border-radius: 12px;
+    }
+    h2 {
+      text-transform: uppercase;
+      color: $light-color;
+    }
+    .info-wrapper {
+      padding: 0.5rem;
+      justify-content: center;
     }
   }
 }

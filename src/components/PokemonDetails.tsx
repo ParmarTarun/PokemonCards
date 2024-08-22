@@ -2,6 +2,7 @@ import { FC, useState } from "react";
 import usePokemon from "../hooks/usePokemon";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { markFavourite } from "../api/pokemon";
+import PokemonInfoPill from "./shared/PokemonInfoPill";
 
 interface PokemonDetailsProps {
   id: number;
@@ -54,14 +55,7 @@ const PokemonDetails: FC<PokemonDetailsProps> = ({ id }) => {
               </button>
             )}
           </h2>
-          <div className="info-wrapper">
-            <p className="pokemon-info">Height: {pokemon.height}</p>
-            <p className="pokemon-info">Weight: {pokemon.weight}</p>
-            <p className="pokemon-info">Order: {pokemon.order}</p>
-            <p className="pokemon-info">Abilities: {pokemon.abilities}</p>
-            <p className="pokemon-info">Forms: {pokemon.forms}</p>
-            <p className="pokemon-info">Types: {pokemon.types}</p>
-          </div>
+          <PokemonInfoPill pokemon={pokemon} />
         </div>
       </div>
       {!!error && <p>{error}</p>}

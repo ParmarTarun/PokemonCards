@@ -48,6 +48,23 @@ button:hover {
   text-decoration: underline;
 }
 
+.info-wrapper {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 10px;
+
+  .pokemon-info {
+    margin: 0;
+    background: $secondary-color;
+    color: $light-color;
+    font-weight: bolder;
+    padding: 0.3rem 1rem;
+    width: max-content;
+    border-radius: 5px;
+  }
+}
+
 .modal-background {
   position: fixed;
   top: 0;
@@ -60,21 +77,28 @@ button:hover {
   justify-content: center;
 
   .modal-content {
+    box-sizing: border-box;
     background: $primary-color;
     border-radius: 10px;
     width: 60%;
     position: relative;
     color: $dark-color;
+    max-height: 70vh;
 
     .modal-header {
+      box-sizing: border-box;
       padding: 0.5rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      background: $primary-color;
     }
     .modal-body {
-      padding: 0.5rem 1rem 1.5rem 1rem;
-      width: 80%;
       margin: auto;
     }
   }
